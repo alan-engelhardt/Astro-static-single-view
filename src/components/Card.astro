@@ -1,7 +1,7 @@
 ---
 const {data} = Astro.props
 ---
-<article data-id={data.id}>
+<article data-id={data.id} class={data.id<=28 && "red" || "blue"}>
     <h2>{data.navn}</h2>
     <p>{data.levested}</p>
     <a href=`enkelt?id=${data.id}`>Læs mere</a>

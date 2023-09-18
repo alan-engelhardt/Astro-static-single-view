@@ -16,7 +16,7 @@ const data = await response.json();
 console.log(data);
 ---
 <Skelet title="Ting" headline="Produkter">
-    <section>
+    <section class="liste">
         {
             data.map(item=>{
                 return <Card data={item} />
