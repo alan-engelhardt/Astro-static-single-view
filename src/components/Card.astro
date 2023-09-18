@@ -1,0 +1,28 @@
+---
+const {navn, tekst, farve} = Astro.props
+---
+<article class={farve}>
+    <h2>{navn}</h2>
+    <p>{tekst}</p>
+    <button>Læs mere</button>
+</article>
+
+<style>
+    article{
+        padding: 1em;
+        margin: 1em;
+    }
+    .blue{
+        background-color: blue;
+        color: white;
+    }
+
+    .red{
+        background-color: red;
+        color: white;
+    }
+
+    .green{
+    background-color: greenyellow;
+    }
+</style>
