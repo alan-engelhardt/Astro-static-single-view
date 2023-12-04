@@ -1,4 +1,5 @@
 ---
+import Navbar from "../components/Navbar.astro";
 const {title, headline} = Astro.props
 import "../css/style.css"
 ---
@@ -12,9 +13,9 @@ import "../css/style.css"
 		<title>{title}</title>
 	</head>
 	<body>
-        <nav><a href="/">Hjem</a> <a href="produkter">Produkter</a> <a href="om">Om os</a></nav>
-        <h1>{headline}</h1>
+        <Navbar title={title}/>
 		<main>
+			<h1>{headline}</h1>
 		<slot/>
 		</main>
 	</body>

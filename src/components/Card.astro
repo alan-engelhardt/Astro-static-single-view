@@ -1,7 +1,7 @@
 ---
 const {data} = Astro.props
 ---
-<article data-id={data.id} class={data.id<=28 && "red" || "blue"}>
+<article data-id={data.id} class={data.sund && "green" || "red"}>
     <h2>{data.navn}</h2>
     <p>{data.levested}</p>
     <a href=`enkelt?id=${data.id}`>Læs mere</a>
@@ -11,6 +11,7 @@ const {data} = Astro.props
     article{
         padding: 1em;
         margin: 1em;
+        position: relative;
     }
     .blue{
         background-color: blue;
@@ -20,6 +21,18 @@ const {data} = Astro.props
     .red{
         background-color: red;
         color: white;
+    }
+
+    .red::after{
+        content: "USUND!";
+    padding: .5em;
+    background-color: white;
+    color: red;
+    position: absolute;
+    right: 14px;
+    top: 2px;
+    rotate: 345deg;
+    box-shadow: grey -2px 3px 15px;
     }
 
     .green{
