@@ -1,0 +1,38 @@
+---
+import Skelet from "../../layouts/Skelet.astro";
+import Card from "../../components/Card.astro";
+const { cid } = Astro.params;
+const options = {
+  headers: {
+    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwYWJramRkeHpuc3BydmtrenVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTM4MzMxMzUsImV4cCI6MjAwOTQwOTEzNX0.p8QClExDi-oKBQN9Gnk3nkdEkkwBAEwQVO_EMPpfAZQ",
+  },
+};
+export async function getStaticPaths() {
+  const url = "https://spabkjddxznsprvkkzuf.supabase.co/rest/v1/kategorier";
+  const options = {
+    headers: {
+      "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwYWJramRkeHpuc3BydmtrenVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTM4MzMxMzUsImV4cCI6MjAwOTQwOTEzNX0.p8QClExDi-oKBQN9Gnk3nkdEkkwBAEwQVO_EMPpfAZQ",
+    },
+  };
+  const response = await fetch(url, options);
+  const data = await response.json();
+  return data.map((el) => ({ params: { cid: el.id } }));
+}
+const res = await fetch(
+"https://spabkjddxznsprvkkzuf.supabase.co/rest/v1/mad?cat_id=eq." + cid,
+  options
+);
+const data = await res.json();
+
+console.log(data, cid);
+---
+<Skelet title="En kategori" headline={cid}>
+
+<section class="liste">
+  {
+      data.map(item=>{
+          return <Card data={item}/>
+      })
+  }
+</section>
+</Skelet>

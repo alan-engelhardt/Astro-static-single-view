@@ -1,0 +1,42 @@
+---
+const {catdata} = Astro.props
+
+console.log(catdata);
+---
+<article catdata-id={catdata.id} class="green">
+    <h2>{catdata.id} : {catdata.kategori}</h2>
+    <a href=`cats/${catdata.id}`>Se emner</a>
+</article>
+
+<style>
+    article{
+        padding: 1em;
+        margin: 1em;
+        position: relative;
+    }
+    .blue{
+        background-color: blue;
+        color: white;
+    }
+
+    .red{
+        background-color: red;
+        color: white;
+    }
+
+    .red::after{
+        content: "USUND!";
+    padding: .5em;
+    background-color: white;
+    color: red;
+    position: absolute;
+    right: 14px;
+    top: 2px;
+    rotate: 345deg;
+    box-shadow: grey -2px 3px 15px;
+    }
+
+    .green{
+    background-color: greenyellow;
+    }
+</style>
