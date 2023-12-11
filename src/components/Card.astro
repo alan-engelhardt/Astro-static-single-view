@@ -4,7 +4,7 @@ const {data} = Astro.props
 <article data-id={data.id} class={data.sund && "green" || "red"}>
     <h2>{data.navn}</h2>
     <p>{data.levested}</p>
-    <a href=`sted?sted=${data.levested}`>Læs mere</a>
+    <a href={data.levested}>Læs mere</a>
 </article>
 
 <style>
