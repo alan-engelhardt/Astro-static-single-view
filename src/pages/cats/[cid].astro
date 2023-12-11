@@ -1,7 +1,8 @@
 ---
 import Skelet from "../../layouts/Skelet.astro";
 import Card from "../../components/Card.astro";
-const { cid, kategori } = Astro.params;
+const { cid } = Astro.params;
+const { post } = Astro.props;
 const options = {
   headers: {
     "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwYWJramRkeHpuc3BydmtrenVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTM4MzMxMzUsImV4cCI6MjAwOTQwOTEzNX0.p8QClExDi-oKBQN9Gnk3nkdEkkwBAEwQVO_EMPpfAZQ",
@@ -16,7 +17,13 @@ export async function getStaticPaths() {
   };
   const response = await fetch(url, options);
   const data = await response.json();
-  return data.map((elm) => ({ params: { cid: elm.id, kategori: elm.kategori } }));
+
+  return data.map((post) => {
+    return {
+      params: { cid: post.id },
+      props: { post },
+    };
+  });
 }
 const res = await fetch(
 "https://spabkjddxznsprvkkzuf.supabase.co/rest/v1/mad?cat_id=eq." + cid,
@@ -24,9 +31,9 @@ const res = await fetch(
 );
 const data = await res.json();
 
-console.log(data);
+//console.log(elm);
 ---
-<Skelet title="Kategorier" headline={cid}>
+<Skelet title="Kategorier" headline={post.kategori}>
 
 <section class="liste">
   {
