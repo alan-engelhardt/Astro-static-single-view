@@ -1,7 +1,5 @@
 ---
 const {catdata} = Astro.props
-
-console.log(catdata);
 ---
 <article catdata-id={catdata.id} class="green">
     <h2>{catdata.id} : {catdata.kategori}</h2>
