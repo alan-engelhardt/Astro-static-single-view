@@ -1,5 +1,5 @@
 ---
-import Skelet from "../layouts/Skelet.astro";
+import Skelet from "../../layouts/Skelet.astro";
 const { pid } = Astro.params;
 const options = {
   headers: {
@@ -15,16 +15,16 @@ export async function getStaticPaths() {
   };
   const response = await fetch(url, options);
   const data = await response.json();
-  return data.map((el) => ({ params: { pid: el._id } }));
+  return data.map((el) => ({ params: { pid: el.id } }));
 }
 const res = await fetch(
-"https://spabkjddxznsprvkkzuf.supabase.co/rest/v1/mad" + pid,
+"https://spabkjddxznsprvkkzuf.supabase.co/rest/v1/mad?id=eq." + pid,
   options
 );
 const data = await res.json();
 
-console.log(pid)
+//console.log(data[0].navn);
 ---
-<Skelet title="En ting" headline={data.navn}>
-<p>Her kommer single view... {data.navn}</p>
+<Skelet title="En ting" headline={data[0].navn}>
+<p>Her kommer single view... {data[0].levested}</p>
 </Skelet>

@@ -3,8 +3,8 @@ const {title}=Astro.props;
 ---
 <nav>
     <a href="/" class={title==="Hjem" && "aktiv"}>Hjem</a>
-    <a href="produkter" class={title==="Ting" && "aktiv"}>Produkter</a> 
-    <a href="om" class={title==="om" && "aktiv"}>Om os</a>
+    <a href="/produkter" class={title==="Ting" && "aktiv"}>Produkter</a> 
+    <a href="/om" class={title==="om" && "aktiv"}>Om os</a>
 </nav>
 
 <style>
