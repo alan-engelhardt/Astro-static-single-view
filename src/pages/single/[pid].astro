@@ -1,30 +1,26 @@
 ---
 import Skelet from "../../layouts/Skelet.astro";
-const { pid } = Astro.params;
-const options = {
-  headers: {
-    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwYWJramRkeHpuc3BydmtrenVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTM4MzMxMzUsImV4cCI6MjAwOTQwOTEzNX0.p8QClExDi-oKBQN9Gnk3nkdEkkwBAEwQVO_EMPpfAZQ",
-  },
-};
+
 export async function getStaticPaths() {
   const url = "https://spabkjddxznsprvkkzuf.supabase.co/rest/v1/mad";
   const options = {
     headers: {
-      "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwYWJramRkeHpuc3BydmtrenVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTM4MzMxMzUsImV4cCI6MjAwOTQwOTEzNX0.p8QClExDi-oKBQN9Gnk3nkdEkkwBAEwQVO_EMPpfAZQ",
+      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwYWJramRkeHpuc3BydmtrenVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTM4MzMxMzUsImV4cCI6MjAwOTQwOTEzNX0.p8QClExDi-oKBQN9Gnk3nkdEkkwBAEwQVO_EMPpfAZQ",
     },
   };
   const response = await fetch(url, options);
   const data = await response.json();
-  return data.map((el) => ({ params: { pid: el.id } }));
+  return data.map((el) => {
+    return {
+      params: { pid: el.id },
+      props: { el },
+    };
+  });
 }
-const res = await fetch(
-"https://spabkjddxznsprvkkzuf.supabase.co/rest/v1/mad?id=eq." + pid,
-  options
-);
-const data = await res.json();
-
-//console.log(data[0].navn);
+const { el } = Astro.props;
 ---
-<Skelet title="En ting" headline={data[0].navn}>
-<p>Her kommer single view... {data[0].levested}</p>
+
+<Skelet title="Ret" headline={el.navn}>
+  <img src={el.billede} alt="retten" />
+  <p>{el.levested}</p>
 </Skelet>
