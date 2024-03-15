@@ -11,8 +11,8 @@ const options = {
   },
 };
 
-const response = await fetch(url, options);
-const data = await response.json();
+// const response = await fetch(url, options);
+const data = await fetch(url, options).then((response) => response.json());
 
 //console.log(data);
 ---
