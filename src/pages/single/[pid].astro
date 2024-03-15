@@ -21,6 +21,8 @@ const { el } = Astro.props;
 ---
 
 <Skelet title="Ret" headline={el.navn}>
-  <img src={el.billede} alt="retten" />
-  <p>{el.levested}</p>
+  <img src={"../billeder/" + el.billede + ".webp"} alt="retten" />
+  <p>Levested: {el.levested}</p>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi animi enim laborum nam illum, recusandae nobis praesentium pariatur saepe dolorum ullam minima dicta dolorem, qui, repellendus necessitatibus placeat amet maiores?</p>
+  <p>adipisicing elit. Sequi animi enim laborum nam illum, recusandae nobis praesentium pariatur saepe dolorum ullam minima dicta dolorem, qui, repellendus necessitatibus</p>
 </Skelet>
