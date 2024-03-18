@@ -1,22 +1,12 @@
 ---
 const { data } = Astro.props;
-console.log(data);
+// console.log(data);
 ---
 
 <article data-id={data.id} class={(data.sund && "green") || "red"}>
   <h2>{data.navn}</h2>
   <p>{data.levested}</p>
-  {
-    data.indhold && (
-      <ul>
-        {data.indhold.map((item) => {
-          return <li> {item} </li>;
-        })}
-      </ul>
-    )
-  }
-
-  <a href=`/single/${data.id}`>Læs mere</a>
+  <a href=`/single/${data.slug}`>Læs mere</a>
 </article>
 
 <style>
