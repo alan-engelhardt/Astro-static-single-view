@@ -6,7 +6,7 @@ const { data } = Astro.props;
 <article data-id={data.id} class={(data.sund && "green") || "red"}>
   <h2>{data.navn}</h2>
   <p>{data.levested}</p>
-  <a href=`/single/${data.slug}`>Læs mere</a>
+  <a href=`/single/${data.id}`>Læs mere</a>
 </article>
 
 <style>

@@ -21,7 +21,7 @@ const data = await fetch(url, options).then((response) => response.json());
   <section class="liste">
     {
       data.map((item) => {
-        return <Card data={item} id={item.id} />;
+        return <Card data={item} />;
       })
     }
   </section>
