@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   const data = await response.json();
   return data.map((el) => {
     return {
-      params: { pid: el.id },
+      params: { pid: el.navn },
       props: { el },
     };
   });
@@ -21,17 +21,19 @@ const { el } = Astro.props;
 ---
 
 <Skelet title="Ret" headline={el.navn}>
-  <img src={"../billeder/" + el.billede + ".webp"} alt="retten" />
-  <p>Levested: {el.levested}</p>
-  {
-    el.indhold && (
-      <ul>
-        {el.indhold.map((item) => {
-          return <li> {item} </li>;
-        })}
-      </ul>
-    )
-  }
-  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi animi enim laborum nam illum, recusandae nobis praesentium pariatur saepe dolorum ullam minima dicta dolorem, qui, repellendus necessitatibus placeat amet maiores?</p>
-  <p>adipisicing elit. Sequi animi enim laborum nam illum, recusandae nobis praesentium pariatur saepe dolorum ullam minima dicta dolorem, qui, repellendus necessitatibus</p>
+  <section class="wrap">
+    <img src={"../billeder/" + el.billede + ".webp"} alt="retten" />
+    <p>Levested: {el.levested}</p>
+    {
+      el.indhold && (
+        <ul>
+          {el.indhold.map((item) => {
+            return <li> {item} </li>;
+          })}
+        </ul>
+      )
+    }
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi animi enim laborum nam illum, recusandae nobis praesentium pariatur saepe dolorum ullam minima dicta dolorem, qui, repellendus necessitatibus placeat amet maiores?</p>
+    <p>adipisicing elit. Sequi animi enim laborum nam illum, recusandae nobis praesentium pariatur saepe dolorum ullam minima dicta dolorem, qui, repellendus necessitatibus</p>
+  </section>
 </Skelet>

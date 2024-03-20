@@ -1,22 +1,22 @@
 ---
 import Navbar from "../components/Navbar.astro";
-const {title, headline} = Astro.props
-import "../css/style.css"
+const { title, headline } = Astro.props;
+import "../css/style.css";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-        <Navbar title={title}/>
-		<main>
-			<h1>{headline}</h1>
-		<slot/>
-		</main>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navbar title={title} />
+    <main>
+      {headline && <h1 id="headline">{headline}</h1>}
+      <slot />
+    </main>
+  </body>
 </html>
