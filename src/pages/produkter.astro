@@ -18,8 +18,8 @@ const data = await fetch(url, options).then((response) => response.json());
 ---
 
 <Skelet title="produkter" headline="Produkter">
+  <div><button>alle</button><button>sunde</button><button>usunde</button></div>
   <section class="liste wrap">
-    <div><button>alle</button><button>sund</button><button>usund</button></div>
     {
       data.map((item) => {
         return <Card data={item} />;
@@ -29,9 +29,16 @@ const data = await fetch(url, options).then((response) => response.json());
 </Skelet>
 
 <style>
+  div {
+    margin: 0 3.2em 1em;
+  }
   button {
-    margin: 0.3rem;
-    padding: 0.3rem;
+    margin: 0.2rem;
+    padding: 0.5rem;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 5px;
+    border: none;
   }
   .gem {
     display: none;
@@ -44,10 +51,10 @@ const data = await fetch(url, options).then((response) => response.json());
     knap.addEventListener("click", () => {
       console.log(knap.textContent);
       document.querySelectorAll("article").forEach((elm) => elm.classList.add("gem"));
-      if (knap.textContent === "sund") {
-        document.querySelectorAll(".sund").forEach((elm) => elm.classList.remove("gem"));
-      } else if (knap.textContent === "usund") {
-        document.querySelectorAll(".usund").forEach((elm) => elm.classList.remove("gem"));
+      if (knap.textContent === "sunde") {
+        document.querySelectorAll(".sunde").forEach((elm) => elm.classList.remove("gem"));
+      } else if (knap.textContent === "usunde") {
+        document.querySelectorAll(".usunde").forEach((elm) => elm.classList.remove("gem"));
       } else {
         document.querySelectorAll("article").forEach((elm) => elm.classList.remove("gem"));
       }
