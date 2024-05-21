@@ -19,6 +19,7 @@ const data = await fetch(url, options).then((response) => response.json());
 
 <Skelet title="produkter" headline="Produkter">
   <section class="liste wrap">
+    <div><button>alle</button><button>sund</button><button>usund</button></div>
     {
       data.map((item) => {
         return <Card data={item} />;
@@ -26,3 +27,30 @@ const data = await fetch(url, options).then((response) => response.json());
     }
   </section>
 </Skelet>
+
+<style>
+  button {
+    margin: 0.3rem;
+    padding: 0.3rem;
+  }
+  .gem {
+    display: none;
+  }
+</style>
+
+<script>
+  const knapper = document.querySelectorAll("button");
+  knapper.forEach((knap) => {
+    knap.addEventListener("click", () => {
+      console.log(knap.textContent);
+      document.querySelectorAll("article").forEach((elm) => elm.classList.add("gem"));
+      if (knap.textContent === "sund") {
+        document.querySelectorAll(".sund").forEach((elm) => elm.classList.remove("gem"));
+      } else if (knap.textContent === "usund") {
+        document.querySelectorAll(".usund").forEach((elm) => elm.classList.remove("gem"));
+      } else {
+        document.querySelectorAll("article").forEach((elm) => elm.classList.remove("gem"));
+      }
+    });
+  });
+</script>

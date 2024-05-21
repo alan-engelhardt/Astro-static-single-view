@@ -36,3 +36,6 @@ nav a {
 h1 {
   margin: 2.5em 2em 0.5em;
 }
+.gem {
+  display: none;
+}
