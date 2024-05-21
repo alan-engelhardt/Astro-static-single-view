@@ -18,7 +18,12 @@ const data = await fetch(url, options).then((response) => response.json());
 ---
 
 <Skelet title="produkter" headline="Produkter">
-  <div><button>alle</button><button>sunde</button><button>usunde</button></div>
+  <div>
+    <button>alle</button>
+    <button>Sunde</button>
+    <button>Usunde</button>
+  </div>
+
   <section class="liste wrap">
     {
       data.map((item) => {
@@ -40,9 +45,6 @@ const data = await fetch(url, options).then((response) => response.json());
     border-radius: 5px;
     border: none;
   }
-  .gem {
-    display: none;
-  }
 </style>
 
 <script>
@@ -51,9 +53,9 @@ const data = await fetch(url, options).then((response) => response.json());
     knap.addEventListener("click", () => {
       console.log(knap.textContent);
       document.querySelectorAll("article").forEach((elm) => elm.classList.add("gem"));
-      if (knap.textContent === "sunde") {
+      if (knap.textContent === "Sunde") {
         document.querySelectorAll(".sunde").forEach((elm) => elm.classList.remove("gem"));
-      } else if (knap.textContent === "usunde") {
+      } else if (knap.textContent === "Usunde") {
         document.querySelectorAll(".usunde").forEach((elm) => elm.classList.remove("gem"));
       } else {
         document.querySelectorAll("article").forEach((elm) => elm.classList.remove("gem"));
