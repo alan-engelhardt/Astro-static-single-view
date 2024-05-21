@@ -21,9 +21,9 @@ const { el } = Astro.props;
 ---
 
 <Skelet title="Ret" headline={el.navn}>
-  <section class="wrap">
+  <section class="wrap single">
     <img src={"../billeder/" + el.billede + ".webp"} alt="retten" />
-    <p>Levested: {el.levested}</p>
+    <h3>Levested: {el.levested}</h3>
     {
       el.indhold && (
         <ul>
@@ -37,3 +37,10 @@ const { el } = Astro.props;
     <p>adipisicing elit. Sequi animi enim laborum nam illum, recusandae nobis praesentium pariatur saepe dolorum ullam minima dicta dolorem, qui, repellendus necessitatibus</p>
   </section>
 </Skelet>
+
+<style>
+  .single,
+  img {
+    max-width: 600px;
+  }
+</style>

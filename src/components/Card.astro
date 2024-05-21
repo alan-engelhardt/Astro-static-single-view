@@ -3,16 +3,15 @@ const { data } = Astro.props;
 // console.log(data);
 ---
 
-<article data-id={data.id} class={(data.sund && "green") || "red"}>
+<article data-id={data.id} class={(data.sund && "sund") || "usund"}>
   <h2>{data.navn}</h2>
-  <p>{data.levested}</p>
+  <h3>{data.levested}</h3>
   <a href=`/single/${data.navn}`>Læs mere</a>
 </article>
 
 <style>
   article {
-    padding: 1em;
-    margin: 1em;
+    padding: 2em;
     position: relative;
   }
   .blue {
@@ -20,23 +19,23 @@ const { data } = Astro.props;
     color: white;
   }
 
-  .red {
-    background-color: greenyellow;
+  .usund {
+    background-color: sundyellow;
   }
 
   .red::after {
     content: "USUND!";
-    padding: 0.5em;
+    padding: 1em;
     background-color: white;
     color: red;
     position: absolute;
     right: 14px;
-    top: 2px;
+    bottom: 10px;
     rotate: 345deg;
     box-shadow: grey -2px 3px 15px;
   }
 
-  .green {
+  .sund {
     background-color: greenyellow;
   }
 </style>
