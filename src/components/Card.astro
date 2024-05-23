@@ -3,7 +3,8 @@ const { data } = Astro.props;
 // console.log(data);
 ---
 
-<article data-id={data.id} class={(data.sund && "sunde") || "usunde"}>
+<!-- hvis data.sund er true, så skal article have klassen "sunde", ellers skal den have en klassen "usunde" -->
+<article class={(data.sund && "sunde") || "usunde"}>
   <h2>{data.navn}</h2>
   <h3>{data.levested}</h3>
   <a href=`/single/${data.navn}`>Læs mere</a>
